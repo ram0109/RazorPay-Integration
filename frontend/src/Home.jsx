@@ -6,8 +6,8 @@ import axios from "axios";
 
 const Home = () => {
     const checkoutHandler=async(amount)=>{
-        const {data:{key}} = await axios.get("http://localhost:4000/api/getKey");
-        const {data:{order}}  = await axios.post("http://localhost:4000/api/checkout", {amount})
+        const {data:{key}} = await axios.get("https://razorpay-integration-backend.onrender.com/api/getKey");
+        const {data:{order}}  = await axios.post("https://razorpay-integration-backend.onrender.com/api/checkout", {amount})
 
         const options = {
             key: key, // Enter the Key ID generated from the Dashboard
@@ -17,7 +17,7 @@ const Home = () => {
             description: "Test Transaction",
             image: "https://avatars.githubusercontent.com/u/137366329?s=400&u=47dcdc75c3b7b56eca556f5c6431b5a1e936f0cc&v=4",
             order_id: order.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
-            callback_url: "http://localhost:4000/api/paymentverification",
+            callback_url: "https://razorpay-integration-backend.onrender.com/api/paymentverification",
             prefill: {
                 "name": "Ram Prasad",
                 "email": "gaurav.kumar@example.com",
